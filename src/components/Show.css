@@ -1,0 +1,32 @@
+.show-container {
+  width: calc(100% / 5.6);
+  margin-bottom: 10px;
+}
+
+.show-container img {
+  width: 100%;
+}
+
+.show-container h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 6px 0;
+}
+
+.show-container div span {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 930px) {
+  .show-container {
+    width: calc(100% / 5.3);
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .show-container {
+    width: calc(100% / 2.4);
+  }
+}

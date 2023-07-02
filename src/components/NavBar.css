@@ -1,0 +1,32 @@
+.nav-bar {
+  position: fixed;
+  top: 0;
+  background: rgb(52, 50, 50);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.nav-options {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  margin: 6px 10px 6px 0;
+}
+
+.nav-options div {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 720px) {
+  .nav-bar {
+    flex-direction: column;
+  }
+
+  .nav-options {
+    width: 80%;
+  }
+}

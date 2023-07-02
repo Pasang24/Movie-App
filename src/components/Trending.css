@@ -1,0 +1,25 @@
+.trending-container {
+  margin-bottom: 20px;
+}
+
+.trending-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.trending-header div {
+  display: flex;
+  justify-content: center;
+  background: rgb(52, 50, 50);
+  border-radius: 4px;
+  font-size: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.trending-header div span {
+  padding: 6px 10px;
+}

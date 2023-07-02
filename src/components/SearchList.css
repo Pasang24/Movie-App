@@ -1,0 +1,7 @@
+.search-list {
+  position: absolute;
+  background: rgb(52, 50, 50);
+  width: 100%;
+  max-width: 720px;
+  top: 100%;
+}

@@ -1,0 +1,20 @@
+.now-playing {
+  width: 200px;
+}
+
+.now-playing img {
+  width: 100%;
+  min-width: 200px;
+}
+
+.now-playing h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 6px 0;
+}
+
+.now-playing div span {
+  font-size: 14px;
+  margin-right: 10px;
+}

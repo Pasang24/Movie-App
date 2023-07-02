@@ -1,0 +1,21 @@
+.popular-show {
+  margin-bottom: 10px;
+}
+
+.popular-show-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+
+.popular-show-header div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.popular-show-header div span {
+  margin-right: 6px;
+}
