@@ -3,8 +3,17 @@
   margin-bottom: 10px;
 }
 
-.show-container img {
+.poster-container {
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  height: 85%;
+}
+
+.poster-container img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .show-container h4 {
@@ -17,6 +26,21 @@
 .show-container div span {
   font-size: 14px;
   margin-right: 10px;
+}
+
+.poster-hovering {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.poster-container:hover > .poster-hovering {
+  opacity: 1;
 }
 
 @media screen and (max-width: 930px) {

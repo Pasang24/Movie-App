@@ -1,15 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import NowPlaying from "./components/NowPlaying";
-import Trending from "./components/Trending";
-import PopularShow from "./components/PopularShow";
+import HomePage from "./pages/HomePage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
     <>
       <NavBar />
-      <NowPlaying />
-      <Trending />
-      <PopularShow />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search/:searchTerm" element={<SearchPage />} />
+      </Routes>
     </>
   );
 }

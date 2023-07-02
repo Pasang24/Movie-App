@@ -11,10 +11,10 @@ function NowPlaying() {
       .get(`${import.meta.env.VITE_API_URL}movie/now_playing`, {
         params: {
           api_key: import.meta.env.VITE_API_KEY,
+          page: 1,
         },
       })
       .then((res) => {
-        console.log(res.data);
         setNowPlayingList(res.data.results);
       })
       .catch((err) => {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SearchBar.css";
 import SearchList from "./SearchList";
@@ -6,6 +7,8 @@ import SearchList from "./SearchList";
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchList, setSearchList] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (searchTerm.length > 2) {
@@ -19,7 +22,6 @@ function SearchBar() {
             },
           })
           .then((res) => {
-            console.log(res.data);
             setSearchList(res.data.results);
           })
           .catch((err) => {
@@ -39,6 +41,7 @@ function SearchBar() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    navigate(`search/${searchTerm}`);
   };
 
   const newList = searchList.length > 5 ? searchList.slice(0, 5) : searchList;
@@ -51,7 +54,7 @@ function SearchBar() {
         placeholder="Search for a movie..."
       />
       <button type="submit">Search</button>
-      <SearchList searchList={newList} />
+      <SearchList searchList={newList} handleSearchResult={handleSubmit} />
     </form>
   );
 }

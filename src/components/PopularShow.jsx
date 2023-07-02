@@ -24,8 +24,6 @@ function PopularShow() {
     const getSeriesList = axios.request(options("trending/tv/week", 1));
 
     axios.all([getMovieList, getSeriesList]).then((allData) => {
-      console.log(allData[0].data.results);
-      console.log(allData[1].data.results);
       setLatestMovies(allData[0].data.results);
       setLatestSeries(allData[1].data.results);
     });

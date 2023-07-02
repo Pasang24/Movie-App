@@ -5,3 +5,12 @@
   max-width: 720px;
   top: 100%;
 }
+
+.search-results-btn {
+  display: grid;
+  place-items: center;
+  background: rgb(53, 173, 53);
+  min-height: 50px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
