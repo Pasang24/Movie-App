@@ -12,7 +12,7 @@ function Show({ show, mediaType }) {
       <div
         className="poster-container"
         onClick={() =>
-          navigate(`${media_type === "movie" ? "movie/" : "tv/"}${show.id}`)
+          navigate(`${media_type === "movie" ? "/movie/" : "/tv/"}${show.id}`)
         }
       >
         <div className="poster-hovering">
