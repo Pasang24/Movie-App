@@ -1,10 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { TbPlayerPlayFilled } from "react-icons/tb";
 import "./NowPlayingShow.css";
 
 function NowPlayingShow({ nowPlaying }) {
+  const navigate = useNavigate();
+
   return (
     <div className="now-playing">
-      <div className="poster-div">
+      <div
+        className="poster-div"
+        onClick={() => navigate(`movie/${nowPlaying.id}`)}
+      >
         <div className="poster-hover">
           <TbPlayerPlayFilled size={50} />
         </div>

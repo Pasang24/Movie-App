@@ -19,7 +19,7 @@ function NavBar() {
           Movies
         </NavLink>
         <NavLink
-          to="/series"
+          to="/tv-show"
           className={({ isActive }) => (isActive ? "active-link" : "")}
         >
           Series

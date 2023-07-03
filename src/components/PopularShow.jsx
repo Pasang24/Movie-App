@@ -51,7 +51,7 @@ function PopularShow() {
         <div className="popular-show-header">
           <h2>Popular TV Shows</h2>
           <div>
-            <span onClick={() => naviagte("/series")}>View All</span>
+            <span onClick={() => naviagte("/tv-show")}>View All</span>
             <IoIosArrowForward />
           </div>
         </div>

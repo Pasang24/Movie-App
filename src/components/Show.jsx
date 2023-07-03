@@ -1,12 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import { TbPlayerPlayFilled } from "react-icons/tb";
 import "./Show.css";
 
 function Show({ show, mediaType }) {
+  const navigate = useNavigate();
+
   const media_type = mediaType ? mediaType : show.media_type;
   const date = show?.first_air_date || show?.release_date;
   return (
     <div className="show-container">
-      <div className="poster-container">
+      <div
+        className="poster-container"
+        onClick={() =>
+          navigate(`${media_type === "movie" ? "movie/" : "tv/"}${show.id}`)
+        }
+      >
         <div className="poster-hovering">
           <TbPlayerPlayFilled size={40} />
         </div>

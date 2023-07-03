@@ -37,7 +37,7 @@ function AllShowList({ page, mediaType }) {
 
   const handlePageChange = (newPage) => {
     navigate(
-      `/${mediaType === "movies" ? "movies" : "series"}/?page=${newPage}`
+      `/${mediaType === "movie" ? "movies" : "tv-show"}/?page=${newPage}`
     );
   };
 
