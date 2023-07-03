@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SearchResultList.css";
 import ShowList from "./ShowList";
+import Pagination from "./Pagination";
 
-function SearchResultList({ searchTerm }) {
+function SearchResultList({ searchTerm, page }) {
   const [searchList, setSearchList] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -12,15 +17,22 @@ function SearchResultList({ searchTerm }) {
         params: {
           api_key: import.meta.env.VITE_API_KEY,
           query: searchTerm,
+          page: page,
         },
       })
       .then((res) => {
+        console.log(res.data);
         setSearchList(res.data.results);
+        setTotalPages(res.data.total_pages);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [searchTerm]);
+  }, [searchTerm, page]);
+
+  const handlePageChange = (newPage) => {
+    navigate(`/search/${searchTerm}/?page=${newPage}`);
+  };
 
   const newList = searchList.filter(
     (searchTerm) =>
@@ -29,7 +41,17 @@ function SearchResultList({ searchTerm }) {
   return (
     <div className="search-result-container">
       <h2>Search results for "{searchTerm}"</h2>
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+      />
       <ShowList showList={newList} />
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 }

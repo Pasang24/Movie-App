@@ -18,8 +18,13 @@
   margin: 6px 10px 6px 0;
 }
 
-.nav-options div {
+.nav-options a {
   cursor: pointer;
+  text-decoration: none;
+}
+
+.active-link {
+  color: rgb(53, 173, 53);
 }
 
 @media screen and (max-width: 720px) {

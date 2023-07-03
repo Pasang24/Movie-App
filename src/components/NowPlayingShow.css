@@ -7,11 +7,13 @@
   overflow: hidden;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  height: 84%;
 }
 
-.now-playing img {
+.poster-div img {
   width: 100%;
   min-width: 200px;
+  object-fit: contain;
 }
 
 .now-playing h4 {

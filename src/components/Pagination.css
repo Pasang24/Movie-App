@@ -1,0 +1,44 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+  width: 100%;
+  user-select: none;
+}
+
+.pagination-main {
+  display: flex;
+  padding: 8px;
+  border-radius: 50px;
+}
+
+.pagination-content {
+  line-height: 48px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  border: none;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  margin: 0 3px;
+}
+
+.pagination-btn {
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.pagination-number {
+  background: rgb(53, 173, 53);
+  font-size: 20px;
+  color: white;
+}
+
+@media (hover: hover) {
+  .pagination-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}

@@ -1,7 +1,13 @@
 .search-result-container {
-  margin: 100px 0 10px;
+  margin: 70px 0 10px;
 }
 
 .search-result-container h2 {
-  padding: 20px 30px 30px;
+  padding: 20px 30px 10px;
+}
+
+@media screen and (max-width: 720px) {
+  .search-result-container {
+    margin-top: 110px;
+  }
 }
