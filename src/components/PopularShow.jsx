@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { IoIosArrowForward } from "react-icons/io";
 import ShowList from "./ShowList";
@@ -7,6 +8,8 @@ import "./PopularShow.css";
 function PopularShow() {
   const [latestMovies, setLatestMovies] = useState([]);
   const [latestSeries, setLatestSeries] = useState([]);
+
+  const naviagte = useNavigate();
 
   const fetchShow = () => {
     const options = (endpoint, page) => {
@@ -38,7 +41,7 @@ function PopularShow() {
         <div className="popular-show-header">
           <h2>Popular Movies</h2>
           <div>
-            <span>View All</span>
+            <span onClick={() => naviagte("/movies")}>View All</span>
             <IoIosArrowForward />
           </div>
         </div>
@@ -48,7 +51,7 @@ function PopularShow() {
         <div className="popular-show-header">
           <h2>Popular TV Shows</h2>
           <div>
-            <span>View All</span>
+            <span onClick={() => naviagte("/series")}>View All</span>
             <IoIosArrowForward />
           </div>
         </div>

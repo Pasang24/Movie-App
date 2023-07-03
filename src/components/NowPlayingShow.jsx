@@ -10,6 +10,8 @@ function NowPlayingShow({ nowPlaying }) {
         </div>
         <img
           src={`https://image.tmdb.org/t/p/original${nowPlaying.poster_path}`}
+          alt={nowPlaying?.title || nowPlaying?.name}
+          loading="lazy"
         />
       </div>
       <h4>{nowPlaying?.title || nowPlaying?.name}</h4>

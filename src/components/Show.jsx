@@ -10,7 +10,11 @@ function Show({ show, mediaType }) {
         <div className="poster-hovering">
           <TbPlayerPlayFilled size={40} />
         </div>
-        <img src={`https://image.tmdb.org/t/p/original${show.poster_path}`} />
+        <img
+          src={`https://image.tmdb.org/t/p/original${show.poster_path}`}
+          alt={show?.title || show?.name}
+          loading="lazy"
+        />
       </div>
       <h4>{show?.title || show?.name}</h4>
       <div>

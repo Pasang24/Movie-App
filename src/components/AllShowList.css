@@ -1,0 +1,13 @@
+.all-list-container {
+  margin: 70px 0 10px;
+}
+
+.all-list-container h2 {
+  padding: 20px 30px 10px;
+}
+
+@media screen and (max-width: 720px) {
+  .all-list-container {
+    margin-top: 110px;
+  }
+}

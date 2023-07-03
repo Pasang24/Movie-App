@@ -23,6 +23,10 @@
   text-decoration: none;
 }
 
+.nav-options a:hover {
+  color: rgb(53, 173, 53);
+}
+
 .active-link {
   color: rgb(53, 173, 53);
 }

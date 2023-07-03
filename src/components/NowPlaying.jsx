@@ -15,6 +15,7 @@ function NowPlaying() {
         },
       })
       .then((res) => {
+        console.log(res.data.results);
         setNowPlayingList(res.data.results);
       })
       .catch((err) => {
