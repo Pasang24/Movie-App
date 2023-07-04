@@ -6,7 +6,7 @@ function Search({ search }) {
   return (
     <li className="search-item">
       <img
-        src={`https://image.tmdb.org/t/p/original${search.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w200${search.poster_path}`}
         alt="Poster"
       />
       <div className="movie-overview">

@@ -15,7 +15,7 @@ function NowPlayingShow({ nowPlaying }) {
           <TbPlayerPlayFilled size={50} />
         </div>
         <img
-          src={`https://image.tmdb.org/t/p/original${nowPlaying.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w400${nowPlaying.poster_path}`}
           alt={nowPlaying?.title || nowPlaying?.name}
           loading="lazy"
         />

@@ -45,6 +45,8 @@ function SearchBar() {
       }, 500);
 
       return () => clearInterval(timer);
+    } else if (searchTerm.length === 0) {
+      setSearchList([]);
     }
   }, [searchTerm]);
 

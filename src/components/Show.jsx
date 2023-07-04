@@ -19,7 +19,7 @@ function Show({ show, mediaType }) {
           <TbPlayerPlayFilled size={40} />
         </div>
         <img
-          src={`https://image.tmdb.org/t/p/original${show.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w400${show.poster_path}`}
           alt={show?.title || show?.name}
           loading="lazy"
         />
