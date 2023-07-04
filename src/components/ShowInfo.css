@@ -3,13 +3,25 @@
 }
 
 .backdrop-poster {
+  position: relative;
+  display: grid;
+  place-items: center;
   margin-bottom: 20px;
-  padding: 0 20px;
+  overflow: hidden;
 }
 
 .backdrop-poster img {
-  width: 100%;
+  width: 90%;
   object-fit: cover;
+}
+
+.backdrop-loader {
+  position: absolute;
+  transition: opacity 0.3s ease-in;
+}
+
+.remove-loader {
+  opacity: 0;
 }
 
 .show-info {
@@ -19,11 +31,17 @@
 }
 
 .show-image {
+  position: relative;
   width: 16%;
 }
 
 .show-image img {
   width: 100%;
+}
+
+.show-image-loader {
+  position: absolute;
+  transition: opacity 0.3s ease-in;
 }
 
 .show-details {

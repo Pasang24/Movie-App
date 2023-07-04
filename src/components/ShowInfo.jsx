@@ -2,15 +2,21 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import axios from "axios";
 import { PiVideoCameraFill } from "react-icons/pi";
-import "./ShowInfo.css";
 import TrailerModal from "./TrailerModal";
 import ShowList from "./ShowList";
+import backdropLoader from "../assets/backdropLoader.jpg";
+import posterLoader from "../assets/posterloader.jpg";
+import "./ShowInfo.css";
 
 function ShowInfo({ showId, mediaType }) {
   const [showInfo, setShowInfo] = useState({});
+  const [showBackdropImage, setShowBackdropImage] = useState(false);
+  const [showPosterImage, setShowPosterImage] = useState(false);
   const [showTrailer, setShowTrailer] = useState(false);
 
   useEffect(() => {
+    setShowBackdropImage(false);
+    setShowPosterImage(false);
     axios
       .get(`${import.meta.env.VITE_API_URL}${mediaType}/${showId}`, {
         params: {
@@ -31,13 +37,27 @@ function ShowInfo({ showId, mediaType }) {
       <div className="show-info-container">
         <div className="backdrop-poster">
           <img
+            className={`backdrop-loader ${
+              showBackdropImage ? "remove-loader" : ""
+            }`}
+            src={backdropLoader}
+          />
+          <img
             src={`https://image.tmdb.org/t/p/original/${showInfo?.backdrop_path}`}
+            onLoad={() => setShowBackdropImage(true)}
           />
         </div>
         <div className="show-info">
           <div className="show-image">
             <img
+              className={`show-image-loader ${
+                showPosterImage ? "remove-loader" : ""
+              }`}
+              src={posterLoader}
+            />
+            <img
               src={`https://image.tmdb.org/t/p/w400/${showInfo?.poster_path}`}
+              onLoad={() => setShowPosterImage(true)}
             />
           </div>
           <div className="show-details">
