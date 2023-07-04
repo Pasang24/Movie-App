@@ -11,9 +11,10 @@ function Show({ show, mediaType }) {
     <div className="show-container">
       <div
         className="poster-container"
-        onClick={() =>
-          navigate(`${media_type === "movie" ? "/movie/" : "/tv/"}${show.id}`)
-        }
+        onClick={() => {
+          window.scrollTo(0, 0);
+          navigate(`${media_type === "movie" ? "/movie/" : "/tv/"}${show.id}`);
+        }}
       >
         <div className="poster-hovering">
           <TbPlayerPlayFilled size={40} />

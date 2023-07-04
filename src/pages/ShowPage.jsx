@@ -1,5 +1,15 @@
+import ShowInfo from "../components/ShowInfo";
+import { useParams } from "react-router-dom";
+
 function ShowPage() {
-  return <div style={{ marginTop: "120px" }}>Show Page</div>;
+  const { tvShowId } = useParams();
+  console.log(tvShowId);
+
+  return (
+    <>
+      <ShowInfo showId={tvShowId} mediaType="tv" />
+    </>
+  );
 }
 
 export default ShowPage;

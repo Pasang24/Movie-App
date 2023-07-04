@@ -26,7 +26,6 @@ function AllShowList({ page, mediaType }) {
         }
       )
       .then((res) => {
-        console.log(res.data);
         setShowList(res.data.results);
         setTotalPages(500);
       })

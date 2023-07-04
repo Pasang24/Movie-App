@@ -12,3 +12,7 @@ body {
   background: rgb(35, 35, 36);
   user-select: none;
 }
+
+#trailer-div {
+  position: relative;
+}

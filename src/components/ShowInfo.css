@@ -1,0 +1,85 @@
+.show-info-container {
+  margin: 80px 0 20px;
+}
+
+.backdrop-poster {
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.backdrop-poster img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.show-info {
+  display: flex;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.show-image {
+  width: 16%;
+}
+
+.show-image img {
+  width: 100%;
+}
+
+.show-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+}
+
+.show-title {
+  font-size: 30px;
+}
+
+.show-options {
+  display: flex;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.trailer-btn {
+  background: rgb(53, 173, 53);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+}
+
+.imdb-rating {
+  background: #ffc107;
+  color: black;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.show-details p {
+  /* font-size: 18px; */
+}
+
+.more-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* font-size: 14px; */
+}
+
+.recommendation h2 {
+  padding: 20px;
+}
+
+@media screen and (max-width: 720px) {
+  .show-info-container {
+    margin-top: 120px;
+  }
+}
