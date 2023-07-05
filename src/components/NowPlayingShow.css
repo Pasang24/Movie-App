@@ -17,6 +17,24 @@
   object-fit: contain;
 }
 
+.now-playing-poster-image {
+  opacity: 0;
+}
+
+.show-now-playing-poster-image {
+  opacity: 1;
+}
+
+.now-playing-poster-loader {
+  position: absolute;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.remove-now-playing-poster-loader {
+  opacity: 0;
+}
+
 .now-playing h4 {
   white-space: nowrap;
   overflow: hidden;

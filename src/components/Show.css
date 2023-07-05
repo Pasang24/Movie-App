@@ -16,6 +16,24 @@
   object-fit: cover;
 }
 
+.poster-image {
+  opacity: 0;
+}
+
+.show-poster-image {
+  opacity: 1;
+}
+
+.poster-loader {
+  position: absolute;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.remove-poster-loader {
+  opacity: 0;
+}
+
 .show-container h4 {
   white-space: nowrap;
   overflow: hidden;

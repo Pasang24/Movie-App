@@ -41,17 +41,21 @@ function SearchResultList({ searchTerm, page }) {
   return (
     <div className="search-result-container">
       <h2>Search results for "{searchTerm}"</h2>
-      <Pagination
-        currentPage={page}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-      />
+      {searchList.length > 0 && (
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
+      )}
       <ShowList showList={newList} />
-      <Pagination
-        currentPage={page}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-      />
+      {searchList.length > 0 && (
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 }

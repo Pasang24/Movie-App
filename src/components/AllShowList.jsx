@@ -43,17 +43,21 @@ function AllShowList({ page, mediaType }) {
   return (
     <div className="all-list-container">
       <h2>Popular {mediaType === "movie" ? "Movies" : "Series"}</h2>
-      <Pagination
-        currentPage={page}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-      />
+      {showList.length > 0 && (
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
+      )}
       <ShowList showList={showList} mediaType={mediaType} />
-      <Pagination
-        currentPage={page}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-      />
+      {showList.length > 0 && (
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 }
