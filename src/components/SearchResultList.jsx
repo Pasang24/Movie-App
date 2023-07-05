@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./SearchResultList.css";
 import ShowList from "./ShowList";
 import Pagination from "./Pagination";
+import "./SearchResultList.css";
 
 function SearchResultList({ searchTerm, page }) {
   const [searchList, setSearchList] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -21,7 +18,6 @@ function SearchResultList({ searchTerm, page }) {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setSearchList(res.data.results);
         setTotalPages(res.data.total_pages);
       })
@@ -30,8 +26,12 @@ function SearchResultList({ searchTerm, page }) {
       });
   }, [searchTerm, page]);
 
+  const changeRoute = (path) => {
+    location.href = path;
+  };
+
   const handlePageChange = (newPage) => {
-    navigate(`/search/${searchTerm}/?page=${newPage}`);
+    changeRoute(`/search/${searchTerm}/?page=${newPage}`);
   };
 
   const newList = searchList.filter(

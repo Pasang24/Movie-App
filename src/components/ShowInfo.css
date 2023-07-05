@@ -17,6 +17,7 @@
 
 .backdrop-loader {
   position: absolute;
+  opacity: 1;
   transition: opacity 0.3s ease-in;
 }
 
@@ -24,15 +25,26 @@
   opacity: 0;
 }
 
+.show-detail-image {
+  opacity: 0;
+}
+
+.visible-show-image {
+  opacity: 1;
+}
+
 .show-info {
   display: flex;
   gap: 30px;
-  padding: 0 20px;
+  padding: 0 5%;
 }
 
 .show-image {
   position: relative;
-  width: 16%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 20%;
 }
 
 .show-image img {
@@ -41,7 +53,47 @@
 
 .show-image-loader {
   position: absolute;
+  width: 100%;
   transition: opacity 0.3s ease-in;
+}
+
+.votings {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.ratings {
+  position: relative;
+  background: gray;
+  border: 3px solid gray;
+  /* overflow: hidden; */
+}
+
+.total-ratings {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: rgb(53, 173, 53);
+  border: 3px solid rgb(53, 173, 53);
+  /* border-radius: 6px; */
+}
+
+.voting-btn {
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.like {
+  background: rgb(53, 173, 53);
+}
+
+.dislike {
+  background: #ffc107;
 }
 
 .show-details {
@@ -99,5 +151,23 @@
 @media screen and (max-width: 720px) {
   .show-info-container {
     margin-top: 120px;
+  }
+
+  .show-info {
+    flex-direction: column;
+  }
+
+  .show-image {
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .show-image img {
+    width: 34%;
+  }
+
+  .votings {
+    width: 100%;
   }
 }

@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./SearchBar.css";
 import SearchList from "./SearchList";
+import "./SearchBar.css";
 
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchList, setSearchList] = useState([]);
   const [showSearchList, setShowSearchList] = useState(false);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const el = document.querySelector(".search-bar");
@@ -50,6 +47,10 @@ function SearchBar() {
     }
   }, [searchTerm]);
 
+  const changeRoute = (path) => {
+    location.href = path;
+  };
+
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -58,11 +59,7 @@ function SearchBar() {
     event.preventDefault();
     if (searchTerm.trim().length === 0) return;
 
-    navigate(`search/${searchTerm}`);
-
-    document.querySelector(".search-input").blur(); //removing focus from searchbar input
-    setSearchTerm("");
-    setSearchList([]);
+    changeRoute(`/search/${searchTerm}`);
   };
 
   const newList = searchList.length > 5 ? searchList.slice(0, 5) : searchList;

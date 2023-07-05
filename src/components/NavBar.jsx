@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import "./NavBar.css";
 
@@ -6,24 +5,9 @@ function NavBar() {
   return (
     <nav className="nav-bar">
       <div className="nav-options">
-        <NavLink
-          to="/"
-          className={({ isActive }) => (isActive ? "active-link" : "")}
-        >
-          Home
-        </NavLink>
-        <NavLink
-          to="/movies"
-          className={({ isActive }) => (isActive ? "active-link" : "")}
-        >
-          Movies
-        </NavLink>
-        <NavLink
-          to="/tv-show"
-          className={({ isActive }) => (isActive ? "active-link" : "")}
-        >
-          Series
-        </NavLink>
+        <a href="/">Home</a>
+        <a href="/movies">Movies</a>
+        <a href="/tv-show">Series</a>
       </div>
       <SearchBar />
     </nav>

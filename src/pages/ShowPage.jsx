@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 function ShowPage() {
   const { tvShowId } = useParams();
-  console.log(tvShowId);
 
   return (
     <>

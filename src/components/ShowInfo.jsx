@@ -13,10 +13,9 @@ function ShowInfo({ showId, mediaType }) {
   const [showBackdropImage, setShowBackdropImage] = useState(false);
   const [showPosterImage, setShowPosterImage] = useState(false);
   const [showTrailer, setShowTrailer] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setShowBackdropImage(false);
-    setShowPosterImage(false);
     axios
       .get(`${import.meta.env.VITE_API_URL}${mediaType}/${showId}`, {
         params: {
@@ -30,8 +29,23 @@ function ShowInfo({ showId, mediaType }) {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [showId]);
+
+  const handleBackdropLoad = () => {
+    setTimeout(() => {
+      setShowBackdropImage(true);
+    }, 300);
+  };
+
+  const handlePosterLoad = () => {
+    setTimeout(() => {
+      setShowPosterImage(true);
+    }, 300);
+  };
   return (
     <>
       <div className="show-info-container">
@@ -44,7 +58,11 @@ function ShowInfo({ showId, mediaType }) {
           />
           <img
             src={`https://image.tmdb.org/t/p/original/${showInfo?.backdrop_path}`}
-            onLoad={() => setShowBackdropImage(true)}
+            className={`show-detail-image ${
+              showBackdropImage ? "visible-show-image" : ""
+            }`}
+            onLoad={handleBackdropLoad}
+            onError={handleBackdropLoad}
           />
         </div>
         <div className="show-info">
@@ -57,8 +75,28 @@ function ShowInfo({ showId, mediaType }) {
             />
             <img
               src={`https://image.tmdb.org/t/p/w400/${showInfo?.poster_path}`}
-              onLoad={() => setShowPosterImage(true)}
+              alt={showInfo?.title}
+              className={`show-detail-image ${
+                showBackdropImage ? "visible-show-image" : ""
+              }`}
+              onLoad={handlePosterLoad}
+              onError={handlePosterLoad}
             />
+            <div className="votings">
+              <span>Rating: {showInfo?.vote_average} / 10</span>
+              <div className="ratings">
+                <div
+                  className="total-ratings"
+                  style={{
+                    width: showInfo?.vote_average
+                      ? `${showInfo.vote_average * 10}%`
+                      : "100%",
+                  }}
+                ></div>
+              </div>
+              <div className="voting-btn like"> Like</div>
+              <div className="voting-btn dislike">Dislike</div>
+            </div>
           </div>
           <div className="show-details">
             <span className="show-title">{showInfo?.title}</span>
@@ -103,12 +141,12 @@ function ShowInfo({ showId, mediaType }) {
       </div>
       <div className="recommendation">
         <h2>You may also like</h2>
-        <ShowList
-          showList={
-            showInfo?.recommendations ? showInfo.recommendations.results : []
-          }
-          mediaType={mediaType}
-        />
+        {!loading && (
+          <ShowList
+            showList={showInfo.recommendations.results || []}
+            mediaType={mediaType}
+          />
+        )}
       </div>
       {showTrailer &&
         createPortal(

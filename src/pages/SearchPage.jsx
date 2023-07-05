@@ -6,8 +6,6 @@ function SearchPage() {
   const { searchTerm } = useParams();
   const page = parseInt(location.search.split("=")[1]) || 1;
 
-  console.log(page);
-
   return (
     <>
       <SearchResultList searchTerm={searchTerm} page={page} />

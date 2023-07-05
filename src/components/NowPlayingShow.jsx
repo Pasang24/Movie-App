@@ -1,25 +1,26 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { TbPlayerPlayFilled } from "react-icons/tb";
 import posterLoader from "../assets/posterloader.jpg";
 import "./NowPlayingShow.css";
 
 function NowPlayingShow({ nowPlaying }) {
   const [showImage, setShowImage] = useState(false);
-  const [timer, setTimer] = useState(false);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    setShowImage(false);
+  const handleImageLoad = () => {
+    setTimeout(() => {
+      setShowImage(true);
+    }, 300);
+  };
 
-    return () => clearTimeout(timer);
-  }, [nowPlaying]);
+  const changeRoute = (path) => {
+    location.href = path;
+  };
 
   return (
     <div className="now-playing">
       <div
         className="poster-div"
-        onClick={() => navigate(`movie/${nowPlaying.id}`)}
+        onClick={() => changeRoute(`/movie/${nowPlaying.id}`)}
       >
         <img
           src={posterLoader}
@@ -34,12 +35,8 @@ function NowPlayingShow({ nowPlaying }) {
           src={`https://image.tmdb.org/t/p/w400${nowPlaying.poster_path}`}
           alt={nowPlaying?.title || nowPlaying?.name}
           loading="lazy"
-          onLoad={() => {
-            const timer = setTimeout(() => {
-              setShowImage(true);
-            }, 300);
-            setTimer(timer);
-          }}
+          onLoad={handleImageLoad}
+          onError={handleImageLoad}
           className={`now-playing-poster-image ${
             showImage ? "show-now-playing-poster-image" : ""
           }`}

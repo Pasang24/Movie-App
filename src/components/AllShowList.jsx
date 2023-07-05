@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./AllShowList.css";
 import ShowList from "./ShowList";
 import Pagination from "./Pagination";
+import "./AllShowList.css";
 
 function AllShowList({ page, mediaType }) {
   const [showList, setShowList] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -34,8 +31,12 @@ function AllShowList({ page, mediaType }) {
       });
   }, [page]);
 
+  const changeRoute = (path) => {
+    location.href = path;
+  };
+
   const handlePageChange = (newPage) => {
-    navigate(
+    changeRoute(
       `/${mediaType === "movie" ? "movies" : "tv-show"}/?page=${newPage}`
     );
   };
