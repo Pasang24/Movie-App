@@ -4,6 +4,8 @@ import axios from "axios";
 import { PiVideoCameraFill } from "react-icons/pi";
 import TrailerModal from "./TrailerModal";
 import ShowList from "./ShowList";
+import ShowDownload from "./ShowDowonload";
+import MovieDownload from "./MovieDownload";
 import backdropLoader from "../assets/backdropLoader.jpg";
 import posterLoader from "../assets/posterloader.jpg";
 import "./ShowInfo.css";
@@ -48,106 +50,126 @@ function ShowInfo({ showId, mediaType }) {
   };
   return (
     <>
-      <div className="show-info-container">
-        <div className="backdrop-poster">
-          <img
-            className={`backdrop-loader ${
-              showBackdropImage ? "remove-loader" : ""
-            }`}
-            src={backdropLoader}
-          />
-          <img
-            src={`https://image.tmdb.org/t/p/original/${showInfo?.backdrop_path}`}
-            className={`show-detail-image ${
-              showBackdropImage ? "visible-show-image" : ""
-            }`}
-            onLoad={handleBackdropLoad}
-            onError={handleBackdropLoad}
-          />
-        </div>
-        <div className="show-info">
-          <div className="show-image">
+      {!loading && (
+        <div className="show-info-container">
+          <div className="backdrop-poster">
             <img
-              className={`show-image-loader ${
-                showPosterImage ? "remove-loader" : ""
+              className={`backdrop-loader ${
+                showBackdropImage ? "remove-loader" : ""
               }`}
-              src={posterLoader}
+              src={backdropLoader}
             />
             <img
-              src={`https://image.tmdb.org/t/p/w400/${showInfo?.poster_path}`}
-              alt={showInfo?.title}
+              src={`https://image.tmdb.org/t/p/original/${showInfo?.backdrop_path}`}
               className={`show-detail-image ${
                 showBackdropImage ? "visible-show-image" : ""
               }`}
-              onLoad={handlePosterLoad}
-              onError={handlePosterLoad}
+              onLoad={handleBackdropLoad}
+              onError={handleBackdropLoad}
             />
-            <div className="votings">
-              <span>Rating: {showInfo?.vote_average} / 10</span>
-              <div className="ratings">
-                <div
-                  className="total-ratings"
-                  style={{
-                    width: showInfo?.vote_average
-                      ? `${showInfo.vote_average * 10}%`
-                      : "100%",
-                  }}
-                ></div>
-              </div>
-              <div className="voting-btn like"> Like</div>
-              <div className="voting-btn dislike">Dislike</div>
-            </div>
           </div>
-          <div className="show-details">
-            <span className="show-title">{showInfo?.title}</span>
-            <div className="show-options">
-              <button
-                className="trailer-btn"
-                onClick={() => setShowTrailer(true)}
-              >
-                <PiVideoCameraFill />
-                <span>Trailer</span>
-              </button>
-              <span className="imdb-rating">IMDB: N/A</span>
+          <div className="show-overview">
+            <div className="show-info">
+              <div className="show-image">
+                <img
+                  className={`show-image-loader ${
+                    showPosterImage ? "remove-loader" : ""
+                  }`}
+                  src={posterLoader}
+                />
+                <img
+                  src={`https://image.tmdb.org/t/p/w400/${showInfo?.poster_path}`}
+                  alt={showInfo?.title || showInfo?.name}
+                  className={`show-detail-image ${
+                    showBackdropImage ? "visible-show-image" : ""
+                  }`}
+                  onLoad={handlePosterLoad}
+                  onError={handlePosterLoad}
+                />
+                <div className="votings">
+                  <span>Rating: {showInfo?.vote_average.toFixed(1)} / 10</span>
+                  <div className="ratings">
+                    <div
+                      className="total-ratings"
+                      style={{
+                        width: showInfo?.vote_average
+                          ? `${showInfo.vote_average * 10}%`
+                          : "100%",
+                      }}
+                    ></div>
+                  </div>
+                  <div className="voting-btn like"> Like</div>
+                  <div className="voting-btn dislike">Dislike</div>
+                </div>
+              </div>
+              <div className="show-details">
+                <span className="show-title">
+                  {showInfo?.title || showInfo?.name}
+                </span>
+                <div className="show-options">
+                  <button
+                    className="trailer-btn"
+                    onClick={() => setShowTrailer(true)}
+                  >
+                    <PiVideoCameraFill />
+                    <span>Trailer</span>
+                  </button>
+                  <span className="imdb-rating">IMDB: N/A</span>
+                </div>
+                <p>{showInfo?.overview}</p>
+                <div className="more-details">
+                  <span>
+                    Original Title:{" "}
+                    {showInfo?.original_title || showInfo?.original_name}
+                  </span>
+                  <span>Released: {showInfo?.release_date}</span>
+                  <span>
+                    Genre:{" "}
+                    {showInfo?.genres &&
+                      showInfo.genres.map((genre) => genre.name).join(", ")}
+                  </span>
+                  <span>Duration: {showInfo?.runtime}min</span>
+                  <span>
+                    Country:{" "}
+                    {showInfo?.production_countries &&
+                      showInfo.production_countries
+                        .map((country) => country.name)
+                        .join(", ")}
+                  </span>
+                  <span>
+                    Production:{" "}
+                    {showInfo?.production_companies &&
+                      showInfo.production_companies
+                        .map((company) => company.name)
+                        .join(", ")}
+                  </span>
+                  <span>Budget: ${showInfo?.budget}</span>
+                </div>
+              </div>
             </div>
-            <p>{showInfo?.overview}</p>
-            <div className="more-details">
-              <span>Original Title: {showInfo?.original_title}</span>
-              <span>Released: {showInfo?.release_date}</span>
-              <span>
-                Genre:{" "}
-                {showInfo?.genres &&
-                  showInfo.genres.map((genre) => genre.name).join(", ")}
-              </span>
-              <span>Duration: {showInfo?.runtime}min</span>
-              <span>
-                Country:{" "}
-                {showInfo?.production_countries &&
-                  showInfo.production_countries
-                    .map((country) => country.name)
-                    .join(", ")}
-              </span>
-              <span>
-                Production:{" "}
-                {showInfo?.production_companies &&
-                  showInfo.production_companies
-                    .map((company) => company.name)
-                    .join(", ")}
-              </span>
-              <span>Budget: ${showInfo?.budget}</span>
-            </div>
+            {mediaType === "tv" ? (
+              <ShowDownload
+                showId={showId}
+                totalSeasons={showInfo?.number_of_seasons}
+                name={showInfo?.name}
+              />
+            ) : (
+              <MovieDownload />
+            )}
           </div>
         </div>
-      </div>
-      <div className="recommendation">
-        <h2>You may also like</h2>
-        {!loading && (
+      )}
+      {!loading && (
+        <div className="recommendation">
+          {showInfo.recommendations.results.length > 0 && (
+            <h2>You may also like</h2>
+          )}
           <ShowList
             showList={showInfo.recommendations.results || []}
             mediaType={mediaType}
           />
-        )}
-      </div>
+        </div>
+      )}
       {showTrailer &&
         createPortal(
           <TrailerModal

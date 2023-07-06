@@ -7,6 +7,7 @@ import "./AllShowList.css";
 function AllShowList({ page, mediaType }) {
   const [showList, setShowList] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -28,6 +29,9 @@ function AllShowList({ page, mediaType }) {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [page]);
 
@@ -42,24 +46,28 @@ function AllShowList({ page, mediaType }) {
   };
 
   return (
-    <div className="all-list-container">
-      <h2>Popular {mediaType === "movie" ? "Movies" : "Series"}</h2>
-      {showList.length > 0 && (
-        <Pagination
-          currentPage={page}
-          totalPages={totalPages}
-          handlePageChange={handlePageChange}
-        />
+    <>
+      {!loading && (
+        <div className="all-list-container">
+          <h2>Popular {mediaType === "movie" ? "Movies" : "Series"}</h2>
+          {showList.length > 0 && (
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages}
+              handlePageChange={handlePageChange}
+            />
+          )}
+          <ShowList showList={showList} mediaType={mediaType} />
+          {showList.length > 0 && (
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages}
+              handlePageChange={handlePageChange}
+            />
+          )}
+        </div>
       )}
-      <ShowList showList={showList} mediaType={mediaType} />
-      {showList.length > 0 && (
-        <Pagination
-          currentPage={page}
-          totalPages={totalPages}
-          handlePageChange={handlePageChange}
-        />
-      )}
-    </div>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ import "./NowPlaying.css";
 
 function NowPlaying() {
   const [nowPlayingList, setNowPlayingList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -19,14 +20,21 @@ function NowPlaying() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
   return (
-    <div className="now-playing-container">
-      <h2>Now Playing</h2>
-      <NowPlayingList nowPlayingList={nowPlayingList} />
-    </div>
+    <>
+      {!loading && (
+        <div className="now-playing-container">
+          <h2>Now Playing</h2>
+          <NowPlayingList nowPlayingList={nowPlayingList} />
+        </div>
+      )}
+    </>
   );
 }
 

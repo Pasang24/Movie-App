@@ -1,0 +1,27 @@
+.selected-drop {
+  background: rgb(52, 50, 50);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  padding: 14px 10px;
+}
+
+.drop-list {
+  background: rgb(52, 50, 50);
+  list-style: none;
+  width: 100%;
+  height: fit-content;
+  max-height: 300px;
+  margin-top: 20px;
+  overflow-y: scroll;
+  border-radius: 6px;
+}
+
+.current-drop {
+  background: rgb(53, 173, 53);
+}
+
+.drop-down li {
+  padding: 16px 10px;
+}
