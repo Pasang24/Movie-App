@@ -4,6 +4,7 @@
   padding: 12px 10px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease;
 }
 
 .episode:hover {

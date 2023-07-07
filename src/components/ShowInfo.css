@@ -78,17 +78,21 @@
 .ratings {
   position: relative;
   background: gray;
-  border: 3px solid gray;
+  /* border: 3px solid gray; */
+  height: 4px;
+  border-radius: 4px;
   /* overflow: hidden; */
 }
 
 .total-ratings {
   position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
   background: rgb(53, 173, 53);
-  border: 3px solid rgb(53, 173, 53);
+  height: 4px;
+  border-radius: 4px;
+  /* top: 50%;
+  left: 0;
+  transform: translateY(-50%); */
+  /* border: 3px solid rgb(53, 173, 53); */
   /* border-radius: 6px; */
 }
 

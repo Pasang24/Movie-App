@@ -1,13 +1,51 @@
+.now-playing-wrapper {
+  position: relative;
+  margin: 0 16px;
+  /* border: 1px solid white; */
+}
+
+.sliding-btn {
+  position: absolute;
+  background: rgb(53, 173, 53);
+  border: none;
+  padding: 10px;
+  width: 50px;
+  height: 60px;
+  border-radius: 4px;
+  z-index: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 10px;
+  font-size: 30px;
+}
+
+.left-slide {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right-slide {
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+}
+
 .now-playing-list {
   display: flex;
   width: 100%;
   gap: 10px;
-  padding: 0 16px;
   overflow-x: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 .now-playing-list::-webkit-scrollbar {
   display: none;
+}
+
+@media screen and (max-width: 720px) {
+  .sliding-btn {
+    display: none;
+  }
 }

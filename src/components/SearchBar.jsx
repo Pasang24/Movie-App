@@ -72,7 +72,7 @@ function SearchBar() {
         onFocus={() => setShowSearchList(true)}
         className="search-input"
         type="text"
-        placeholder="Search for a movie..."
+        placeholder="Search for a movie or series..."
       />
       <button type="submit">Search</button>
       {showSearchList && (

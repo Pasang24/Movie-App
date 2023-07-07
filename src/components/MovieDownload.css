@@ -12,6 +12,7 @@
   padding: 12px 10px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease;
 }
 
 .movie-download-wrapper:hover {
@@ -55,6 +56,9 @@
 
 .mv-name h4 {
   margin-bottom: 6px;
+}
+
+.mv-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
