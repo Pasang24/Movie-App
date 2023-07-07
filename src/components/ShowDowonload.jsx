@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import posterLoader from "../assets/posterloader.jpg";
 import DropDown from "./DropDown";
-import posterLoader from "../assets/backdropLoader.jpg";
 import "./ShowDownload.css";
+import Episode from "./Episode";
 
 function ShowDownload({ showId, totalSeasons }) {
   const [season, setSeason] = useState("Season 1");
   const [episodeList, setEpisodeList] = useState([]);
   const [showEp, setShowEp] = useState(true);
-  const [showImage, setShowImage] = useState(false);
 
   const drops = [];
 
@@ -16,42 +16,8 @@ function ShowDownload({ showId, totalSeasons }) {
     drops.push(`Season ${i}`);
   }
 
-  useEffect(() => {
-    setShowImage(false);
-  }, [season]);
-
-  const handleImageLoad = () => {
-    setShowImage(true);
-  };
-
   const renderEpisodeList = episodeList.map((episode, indx) => {
-    return (
-      <li key={indx} className="episode">
-        <div className="episode-image">
-          <img
-            className={`ep-image-loader ${
-              showImage ? "remove-ep-image-loader" : ""
-            }`}
-            src={posterLoader}
-          />
-          <img
-            src={`https://image.tmdb.org/t/p/w200${episode.still_path}`}
-            alt={episode.name}
-            onLoad={handleImageLoad}
-            onError={handleImageLoad}
-          />
-        </div>
-        <div className="episode-content">
-          <div className="ep-name">
-            <h4>Episode {episode.episode_number}</h4>
-            <span>{episode.name}</span>
-          </div>
-          <div className="ep-release-date">
-            <span>Released {episode.air_date}</span>
-          </div>
-        </div>
-      </li>
-    );
+    return <Episode episode={episode} key={indx} />;
   });
 
   useEffect(() => {
@@ -72,9 +38,6 @@ function ShowDownload({ showId, totalSeasons }) {
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {
-        // setLoading(false);
       });
   }, [season]);
 
