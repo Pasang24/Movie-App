@@ -5,6 +5,8 @@
   align-items: center;
   border-radius: 6px;
   padding: 14px 10px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .drop-list {
@@ -24,4 +26,10 @@
 
 .drop-down li {
   padding: 16px 10px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.drop-down li:hover {
+  background: rgb(53, 173, 53);
 }

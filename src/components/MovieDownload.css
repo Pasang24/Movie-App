@@ -1,0 +1,71 @@
+.movie-download {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: flex-start;
+  width: 50%;
+}
+
+.movie-download-wrapper {
+  display: flex;
+  gap: 10px;
+  padding: 12px 10px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.movie-download-wrapper:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.movie-download-heading {
+  font-size: 20px;
+}
+
+.movie-player-image {
+  position: relative;
+  width: 30%;
+}
+
+.movie-player-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+}
+
+.movie-player-image img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.movie-content {
+  display: flex;
+  width: 50%;
+  flex-grow: 0;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.mv-name span {
+  font-size: 14px;
+}
+
+.mv-name h4 {
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mv-release-date span {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 950px) {
+  .movie-download {
+    width: 100%;
+  }
+}

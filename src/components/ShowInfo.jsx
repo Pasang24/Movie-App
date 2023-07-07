@@ -154,7 +154,7 @@ function ShowInfo({ showId, mediaType }) {
                 name={showInfo?.name}
               />
             ) : (
-              <MovieDownload />
+              <MovieDownload movieInfo={showInfo} />
             )}
           </div>
         </div>

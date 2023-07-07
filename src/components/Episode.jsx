@@ -4,23 +4,25 @@ import episodeImageHolder from "../assets/posterloader.jpg";
 import "./Episode.css";
 
 function Episode({ episode }) {
-  const [showLoader, setShowLoader] = useState(false);
+  const [showImageHolder, setShowImageHolder] = useState(false);
 
   useEffect(() => {
-    setShowLoader(false);
+    setShowImageHolder(false);
   }, [episode]);
 
+  const handleClick = () => {};
+
   return (
-    <li className="episode">
+    <li className="episode" onClick={handleClick}>
       <div className="episode-image">
         <TbPlayerPlay className="player-logo" />
-        {showLoader && <img src={episodeImageHolder} />}
-        {!showLoader && (
+        {showImageHolder && <img src={episodeImageHolder} />}
+        {!showImageHolder && (
           <img
-            src={`https://image.tmdb.org/t/p/w200${episode.still_path}`}
+            src={`https://image.tmdb.org/t/p/w400${episode.still_path}`}
             alt={episode.name}
             loading="lazy"
-            onError={() => setShowLoader(true)}
+            onError={() => setShowImageHolder(true)}
           />
         )}
       </div>
