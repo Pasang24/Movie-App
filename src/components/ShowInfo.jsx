@@ -22,11 +22,10 @@ function ShowInfo({ showId, mediaType }) {
       .get(`${import.meta.env.VITE_API_URL}${mediaType}/${showId}`, {
         params: {
           api_key: import.meta.env.VITE_API_KEY,
-          append_to_response: "videos,recommendations",
+          append_to_response: "videos,recommendations,credits",
         },
       })
       .then((res) => {
-        console.log(res.data);
         setShowInfo(res.data);
       })
       .catch((err) => {
@@ -122,13 +121,27 @@ function ShowInfo({ showId, mediaType }) {
                     Original Title:{" "}
                     {showInfo?.original_title || showInfo?.original_name}
                   </span>
-                  <span>Released: {showInfo?.release_date}</span>
+                  <span>
+                    Released:{" "}
+                    {showInfo?.release_date || showInfo?.first_air_date}
+                  </span>
                   <span>
                     Genre:{" "}
                     {showInfo?.genres &&
                       showInfo.genres.map((genre) => genre.name).join(", ")}
                   </span>
-                  <span>Duration: {showInfo?.runtime}min</span>
+                  <span>
+                    Casts:{" "}
+                    {showInfo?.credits &&
+                      showInfo.credits.cast
+                        .slice(0, 5)
+                        .map((cast) => cast.name)
+                        .join(", ")}
+                  </span>
+                  <span>
+                    Duration: {showInfo?.runtime || showInfo?.episode_run_time}
+                    min
+                  </span>
                   <span>
                     Country:{" "}
                     {showInfo?.production_countries &&
@@ -143,7 +156,6 @@ function ShowInfo({ showId, mediaType }) {
                         .map((company) => company.name)
                         .join(", ")}
                   </span>
-                  <span>Budget: ${showInfo?.budget}</span>
                 </div>
               </div>
             </div>

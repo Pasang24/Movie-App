@@ -18,10 +18,8 @@ function NowPlayingList({ nowPlayingList, addMovies }) {
     const slider = document.querySelector(".now-playing-list");
 
     const handleScroll = () => {
-      const scrollValue = Math.floor(slider.scrollLeft);
+      const scrollValue = Math.round(slider.scrollLeft);
       const totalScrollValue = slider.scrollWidth - slider.clientWidth;
-      console.log(scrollValue, totalScrollValue);
-
       const pageLength = Math.ceil(nowPlayingList.length / 20);
 
       if (scrollValue === totalScrollValue && pageLength < 3) {

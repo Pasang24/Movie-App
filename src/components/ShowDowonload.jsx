@@ -33,7 +33,7 @@ function ShowDownload({ showId, totalSeasons }) {
         }
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setEpisodeList(res.data.episodes);
       })
       .catch((err) => {
