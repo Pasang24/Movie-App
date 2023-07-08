@@ -196,10 +196,12 @@
   }
 
   .show-image img {
+    justify-self: flex-start;
     width: 34%;
   }
 
   .votings {
-    width: 100%;
+    width: 70%;
+    justify-self: flex-end;
   }
 }

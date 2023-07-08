@@ -26,12 +26,38 @@ function NowPlaying() {
       });
   }, []);
 
+  const addMovies = (page) => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}movie/now_playing`, {
+        params: {
+          api_key: import.meta.env.VITE_API_KEY,
+          page: page,
+        },
+      })
+      .then((res) => {
+        const newList = res.data.results;
+        // need to look at this part again
+        const checkDuplicate = newList.every((movie) => {
+          return nowPlayingList.includes(movie);
+        });
+        if (!checkDuplicate) {
+          setNowPlayingList([...nowPlayingList, ...newList]);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       {!loading && (
         <div className="now-playing-container">
           <h2>Now Playing</h2>
-          <NowPlayingList nowPlayingList={nowPlayingList} />
+          <NowPlayingList
+            nowPlayingList={nowPlayingList}
+            addMovies={addMovies}
+          />
         </div>
       )}
     </>

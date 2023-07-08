@@ -1,14 +1,44 @@
+import { useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import NowPlayingShow from "./NowPlayingShow";
+import LineLoader from "./LineLoader";
 import "./NowPlayingList.css";
 
-function NowPlayingList({ nowPlayingList }) {
+function NowPlayingList({ nowPlayingList, addMovies }) {
+  const [showLoader, setShowLoader] = useState(false);
+
   const renderedList = nowPlayingList.map((nowPlaying, indx) => (
     <NowPlayingShow nowPlaying={nowPlaying} key={indx} />
   ));
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 500);
+    const slider = document.querySelector(".now-playing-list");
+
+    const handleScroll = () => {
+      const scrollValue = Math.floor(slider.scrollLeft);
+      const totalScrollValue = slider.scrollWidth - slider.clientWidth;
+      console.log(scrollValue, totalScrollValue);
+
+      const pageLength = Math.ceil(nowPlayingList.length / 20);
+
+      if (scrollValue === totalScrollValue && pageLength < 3) {
+        setShowLoader(true);
+        addMovies(pageLength + 1);
+      }
+    };
+
+    slider.addEventListener("scroll", handleScroll);
+
+    return () => {
+      // clearTimeout(timer);
+      slider.removeEventListener("scroll", handleScroll);
+    };
+  }, [addMovies]);
+
   const handleSlide = (slideDirection) => {
-    const sliderContainer = document.querySelector("now-playing-wrapper");
     const slider = document.querySelector(".now-playing-list");
 
     const slideValue = Math.floor(slider.clientWidth / 210) || 1;
@@ -22,14 +52,23 @@ function NowPlayingList({ nowPlayingList }) {
 
   return (
     <div className="now-playing-wrapper">
-      {/* <div className="sliding-btns"> */}
-      <button className="sliding-btn left-slide">
-        <IoIosArrowBack onClick={() => handleSlide("left")} />
+      <button
+        onClick={() => handleSlide("left")}
+        className="sliding-btn left-slide "
+      >
+        <IoIosArrowBack />
       </button>
-      <button className="sliding-btn right-slide">
-        <IoIosArrowForward onClick={() => handleSlide("right")} />
+      <button
+        onClick={() => handleSlide("right")}
+        className="sliding-btn right-slide"
+      >
+        <IoIosArrowForward />
       </button>
-      {/* </div> */}
+      {showLoader && (
+        <div className="loader-wrapper">
+          <LineLoader />
+        </div>
+      )}
       <div className="now-playing-list">{renderedList}</div>
     </div>
   );
