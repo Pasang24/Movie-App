@@ -5,8 +5,22 @@ import "./MovieDownload.css";
 
 function MovieDownload({ movieInfo }) {
   const [showImageHolder, setShowImageHolder] = useState();
+
+  const changeRoute = (path) => {
+    location.href = path;
+  };
+
   return (
-    <div className="movie-download">
+    <div
+      className="movie-download"
+      onClick={() =>
+        changeRoute(
+          `/download-movie/${movieInfo.title
+            .split(".")
+            .join("_")}_${movieInfo.release_date.slice(0, 4)}`
+        )
+      }
+    >
       <span className="movie-download-heading">Watch Now</span>
       <div className="movie-download-wrapper">
         <div className="movie-player-image">

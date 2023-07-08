@@ -8,6 +8,8 @@ const MoviesPage = lazy(() => import("./pages/MoviesPage"));
 const SeriesPage = lazy(() => import("./pages/SeriesPage"));
 const MoviePage = lazy(() => import("./pages/MoviePage"));
 const ShowPage = lazy(() => import("./pages/ShowPage"));
+const DownloadMoviePage = lazy(() => import("./pages/DownloadMoviePage"));
+const DownloadSeriesPage = lazy(() => import("./pages/DownloadSeriesPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
@@ -21,6 +23,14 @@ function App() {
         <Route path="/tv-show" element={<SeriesPage />} />
         <Route path="/movie/:movieId" element={<MoviePage />} />
         <Route path="/tv/:tvShowId" element={<ShowPage />} />
+        <Route
+          path="/download-movie/:movieInfo"
+          element={<DownloadMoviePage />}
+        />
+        <Route
+          path="/download-tv/:seriesName"
+          element={<DownloadSeriesPage />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

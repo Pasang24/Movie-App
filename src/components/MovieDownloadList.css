@@ -1,0 +1,99 @@
+.movie-download-list-wrapper {
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.movie-download-list-wrapper h2 {
+  padding: 10px;
+}
+
+/* .movie-download-list-wrapper ul {
+} */
+
+.movie-download-links-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 10px;
+}
+
+.movie-download-links-wrapper:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.movie-download-quality {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 60%;
+  /* border: 1px solid white; */
+}
+
+.movie-download-quality h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.movie-download-links {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  /* border: 1px solid white; */
+  width: 30%;
+  max-width: 150px;
+}
+
+.movie-download-links a {
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+.movie-torrent-link {
+  background-color: rgb(53, 173, 53);
+}
+
+.movie-magnet-link {
+  background-color: rgb(244, 53, 53);
+}
+
+@media screen and (max-width: 720px) {
+  .movie-download-list-wrapper {
+    margin-top: 90px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .movie-download-links {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .movie-download-links a {
+    display: flex;
+    width: 100%;
+    padding: 6px 0;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .movie-download-links-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .movie-download-quality {
+    width: 100%;
+  }
+
+  .movie-download-links {
+    flex-direction: row;
+    width: 100%;
+    padding: 4px 0;
+  }
+}
