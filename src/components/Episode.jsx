@@ -3,17 +3,24 @@ import { TbPlayerPlay } from "react-icons/tb";
 import episodeImageHolder from "../assets/posterloader.jpg";
 import "./Episode.css";
 
-function Episode({ episode }) {
+function Episode({ showId, seasonId, episode }) {
   const [showImageHolder, setShowImageHolder] = useState(false);
 
   useEffect(() => {
     setShowImageHolder(false);
   }, [episode]);
 
-  const handleClick = () => {};
+  const changeRoute = (path) => {
+    location.href = path;
+  };
 
   return (
-    <li className="episode" onClick={handleClick}>
+    <li
+      className="episode"
+      onClick={() =>
+        changeRoute(`/watch-tv/${showId}-${seasonId}-${episode.id}`)
+      }
+    >
       <div className="episode-image">
         <TbPlayerPlay className="player-logo" />
         {showImageHolder && <img src={episodeImageHolder} />}

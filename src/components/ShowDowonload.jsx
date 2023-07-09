@@ -7,6 +7,7 @@ import Episode from "./Episode";
 
 function ShowDownload({ showId, totalSeasons }) {
   const [season, setSeason] = useState("Season 1");
+  const [seasonId, setSeasonId] = useState(0);
   const [episodeList, setEpisodeList] = useState([]);
   const [showEp, setShowEp] = useState(true);
 
@@ -17,7 +18,14 @@ function ShowDownload({ showId, totalSeasons }) {
   }
 
   const renderEpisodeList = episodeList.map((episode, indx) => {
-    return <Episode episode={episode} key={indx} />;
+    return (
+      <Episode
+        showId={showId}
+        seasonId={seasonId}
+        episode={episode}
+        key={indx}
+      />
+    );
   });
 
   useEffect(() => {
@@ -33,7 +41,8 @@ function ShowDownload({ showId, totalSeasons }) {
         }
       )
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
+        setSeasonId(res.data.id);
         setEpisodeList(res.data.episodes);
       })
       .catch((err) => {

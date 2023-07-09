@@ -1,0 +1,13 @@
+.video-stream-wrapper {
+  width: 90%;
+  max-width: 1200px;
+  /* border: 1px solid white; */
+  aspect-ratio: 19 / 10;
+  margin: 80px auto 10px;
+}
+
+@media screen and (max-width: 720px) {
+  .video-stream-wrapper {
+    margin-top: 116px;
+  }
+}

@@ -26,6 +26,7 @@ function ShowInfo({ showId, mediaType }) {
         },
       })
       .then((res) => {
+        console.log(res.data);
         setShowInfo(res.data);
       })
       .catch((err) => {

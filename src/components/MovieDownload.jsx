@@ -4,25 +4,19 @@ import movieImageHolder from "../assets/posterloader.jpg";
 import "./MovieDownload.css";
 
 function MovieDownload({ movieInfo }) {
-  const [showImageHolder, setShowImageHolder] = useState();
+  const [showImageHolder, setShowImageHolder] = useState(false);
 
   const changeRoute = (path) => {
     location.href = path;
   };
 
   return (
-    <div
-      className="movie-download"
-      onClick={() =>
-        changeRoute(
-          `/download-movie/${movieInfo.title
-            .split(".")
-            .join("_")}_${movieInfo.release_date.slice(0, 4)}`
-        )
-      }
-    >
+    <div className="movie-download">
       <span className="movie-download-heading">Watch Now</span>
-      <div className="movie-download-wrapper">
+      <div
+        className="movie-download-wrapper"
+        onClick={() => changeRoute(`/watch-movie/${movieInfo.id}`)}
+      >
         <div className="movie-player-image">
           <TbPlayerPlay className="movie-player-logo" />
           {showImageHolder && <img src={movieImageHolder} />}
