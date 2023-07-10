@@ -5,6 +5,7 @@ import ShowList from "../show_components/ShowList";
 import "./SeriesPlayer.css";
 
 function SeriesPlayer({ seriesId }) {
+  console.log(seriesId);
   const [info, setInfo] = useState({});
 
   useEffect(() => {

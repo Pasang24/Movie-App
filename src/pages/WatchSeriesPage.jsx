@@ -7,7 +7,7 @@ function DownloadSeriesPage() {
 
   return (
     <>
-      <SeriesPlayer seriesId={seriesId} />
+      <SeriesPlayer seriesId={showId} />
     </>
   );
 }
