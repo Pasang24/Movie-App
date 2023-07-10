@@ -1,4 +1,4 @@
-import SearchBar from "./SearchBar";
+import SearchBar from "../search_components/SearchBar.jsx";
 import "./NavBar.css";
 
 function NavBar() {

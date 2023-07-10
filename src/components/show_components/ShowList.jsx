@@ -1,4 +1,4 @@
-import Show from "./Show";
+import Show from "./Show.jsx";
 import "./ShowList.css";
 
 function ShowList({ showList, mediaType }) {

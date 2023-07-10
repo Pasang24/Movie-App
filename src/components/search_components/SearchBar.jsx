@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import SearchList from "./SearchList";
+import SearchList from "./SearchList.jsx";
 import "./SearchBar.css";
 
 function SearchBar() {

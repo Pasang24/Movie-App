@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TbPlayerPlay } from "react-icons/tb";
-import movieImageHolder from "../assets/posterloader.jpg";
+import movieImageHolder from "../../assets/posterloader.jpg";
 import "./MovieDownload.css";
 
 function MovieDownload({ movieInfo }) {

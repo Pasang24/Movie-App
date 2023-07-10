@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import VideoStreamer from "../components/VideoStreamer";
+import VideoStreamer from "../components/custom_components/VideoStreamer.jsx";
 
 function WatchMoviePage() {
   const { movieId } = useParams();

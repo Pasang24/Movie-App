@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { IoIosArrowForward } from "react-icons/io";
-import ShowList from "./ShowList";
+import ShowList from "./ShowList.jsx";
 import "./PopularShow.css";
 
 function PopularShow() {

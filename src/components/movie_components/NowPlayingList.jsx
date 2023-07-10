@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import NowPlayingShow from "./NowPlayingShow";
-import LineLoader from "./LineLoader";
+import NowPlayingShow from "./NowPlayingShow.jsx";
+import LineLoader from "../loader_components/LineLoader.jsx";
 import "./NowPlayingList.css";
 
 function NowPlayingList({ nowPlayingList, addMovies }) {

@@ -1,4 +1,4 @@
-import Search from "./Search";
+import Search from "./Search.jsx";
 import "./SearchList.css";
 
 function SearchList({ searchList, handleSearchResult }) {

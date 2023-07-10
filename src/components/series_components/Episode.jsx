@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { TbPlayerPlay } from "react-icons/tb";
-import episodeImageHolder from "../assets/posterloader.jpg";
+import episodeImageHolder from "../../assets/posterloader.jpg";
 import "./Episode.css";
 
 function Episode({ showId, seasonId, episode }) {

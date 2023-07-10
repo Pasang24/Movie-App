@@ -1,4 +1,4 @@
-import ShowInfo from "../components/ShowInfo";
+import ShowInfo from "../components/show_components/ShowInfo.jsx";
 import { useParams } from "react-router-dom";
 
 function ShowPage() {

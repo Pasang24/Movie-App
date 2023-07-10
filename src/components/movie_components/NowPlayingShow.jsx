@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TbPlayerPlayFilled } from "react-icons/tb";
-import posterLoader from "../assets/posterloader.jpg";
+import posterLoader from "../../assets/posterloader.jpg";
 import "./NowPlayingShow.css";
 
 function NowPlayingShow({ nowPlaying }) {

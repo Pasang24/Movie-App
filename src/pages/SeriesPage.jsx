@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import AllShowList from "../components/AllShowList";
+import AllShowList from "../components/show_components/AllShowList.jsx";
 
 function SeriesPage() {
   const location = useLocation();

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import posterLoader from "../assets/posterloader.jpg";
-import DropDown from "./DropDown";
+import posterLoader from "../../assets/posterloader.jpg";
+import DropDown from "../custom_components/DropDown.jsx";
 import "./ShowDownload.css";
-import Episode from "./Episode";
+import Episode from "./Episode.jsx";
 
 function ShowDownload({ showId, totalSeasons }) {
   const [season, setSeason] = useState("Season 1");

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import NowPlayingList from "./NowPlayingList";
+import NowPlayingList from "./NowPlayingList.jsx";
 import "./NowPlaying.css";
 
 function NowPlaying() {

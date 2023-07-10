@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ShowList from "./ShowList";
+import ShowList from "./ShowList.jsx";
 import "./Trending.css";
 
 function Trending() {

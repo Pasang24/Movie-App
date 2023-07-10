@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import axios from "axios";
 import { PiVideoCameraFill } from "react-icons/pi";
-import TrailerModal from "./TrailerModal";
-import ShowList from "./ShowList";
-import ShowDownload from "./ShowDowonload";
-import MovieDownload from "./MovieDownload";
-import backdropLoader from "../assets/backdropLoader.jpg";
-import posterLoader from "../assets/posterloader.jpg";
+import TrailerModal from "../custom_components/TrailerModal.jsx";
+import ShowList from "./ShowList.jsx";
+import ShowDownload from "../series_components/ShowDowonload.jsx";
+import MovieDownload from "../movie_components/MovieDownload.jsx";
+import backdropLoader from "../../assets/backdropLoader.jpg";
+import posterLoader from "../../assets/posterloader.jpg";
 import "./ShowInfo.css";
 
 function ShowInfo({ showId, mediaType }) {

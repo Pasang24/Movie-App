@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ShowList from "./ShowList";
-import Pagination from "./Pagination";
+import ShowList from "./ShowList.jsx";
+import Pagination from "../custom_components/Pagination.jsx";
 import "./AllShowList.css";
 
 function AllShowList({ page, mediaType }) {

@@ -1,5 +1,5 @@
 import { useParams, useLocation } from "react-router-dom";
-import SearchResultList from "../components/SearchResultList";
+import SearchResultList from "../components/search_components/SearchResultList.jsx";
 
 function SearchPage() {
   const location = useLocation();
