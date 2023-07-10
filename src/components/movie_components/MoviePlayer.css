@@ -1,0 +1,62 @@
+.movie-small-info {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  margin: 10px auto 50px;
+  gap: 10px;
+}
+
+.movie-small-image-preview {
+  width: 30%;
+  max-width: 100px;
+}
+
+.movie-small-image-preview img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 6px;
+}
+
+.m-small-info {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  width: 60%;
+}
+
+.m-small-info h3,
+.m-small-info span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recommendations-title {
+  margin: 0 auto 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.recommendations-list {
+  margin: 0 auto 20px;
+  width: 90%;
+  max-width: 1300px;
+}
+
+@media screen and (max-width: 1100px) {
+  .movie-small-info {
+    margin-left: 14px;
+  }
+
+  .recommendations-title {
+    margin-left: 14px;
+  }
+
+  .recommendations-list {
+    width: 100%;
+  }
+}

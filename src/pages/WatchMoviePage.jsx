@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import VideoStreamer from "../components/custom_components/VideoStreamer.jsx";
+import MoviePlayer from "../components/movie_components/MoviePlayer.jsx";
 
 function WatchMoviePage() {
   const { movieId } = useParams();
@@ -8,7 +8,7 @@ function WatchMoviePage() {
 
   return (
     <>
-      <VideoStreamer showId={`movie-${movieId}`} />
+      <MoviePlayer movieId={movieId} />
     </>
   );
 }

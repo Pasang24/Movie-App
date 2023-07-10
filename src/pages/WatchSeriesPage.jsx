@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import VideoStreamer from "../components/custom_components/VideoStreamer.jsx";
+import SeriesPlayer from "../components/series_components/SeriesPlayer.jsx";
 
 function DownloadSeriesPage() {
   const { seriesId } = useParams();
@@ -7,7 +7,7 @@ function DownloadSeriesPage() {
 
   return (
     <>
-      <VideoStreamer showId={`show-${showId}`} />
+      <SeriesPlayer seriesId={seriesId} />
     </>
   );
 }
