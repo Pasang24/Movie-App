@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import VideoStreamer from "../custom_components/VideoStreamer";
 import ShowList from "../show_components/ShowList";
-import posterLoader from "../../assets/posterLoader.jpg";
+import posterLoader from "../../assets/posterloader.jpg";
 import posterNotAvailable from "../../assets/posterNotAvailable.png";
 import "./MoviePlayer.css";
 
