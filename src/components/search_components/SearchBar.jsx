@@ -31,6 +31,7 @@ function SearchBar() {
               api_key: import.meta.env.VITE_API_KEY,
               query: searchTerm,
               limit: 5,
+              include_adult: false,
             },
           })
           .then((res) => {

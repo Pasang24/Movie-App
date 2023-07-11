@@ -15,7 +15,12 @@ body {
 }
 
 body::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+  background-color: rgb(79, 80, 82);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(53, 173, 53);
 }
 
 #trailer-div {

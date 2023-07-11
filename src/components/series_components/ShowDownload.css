@@ -10,6 +10,15 @@
   max-height: 300px;
 }
 
+.episode-list::-webkit-scrollbar {
+  background-color: rgb(79, 80, 82);
+  width: 8px;
+}
+
+.episode-list::-webkit-scrollbar-thumb {
+  background-color: rgb(53, 173, 53);
+}
+
 @media screen and (max-width: 950px) {
   .show-downloads {
     width: 100%;

@@ -7,6 +7,7 @@
 }
 
 .series-small-image-preview {
+  position: relative;
   width: 30%;
   max-width: 100px;
 }
@@ -15,8 +16,25 @@
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  object-position: top;
   border-radius: 6px;
+}
+
+.s-preview-img {
+  opacity: 0;
+}
+
+.show-s-preview-img {
+  opacity: 1;
+}
+
+.s-preview-img-loader {
+  position: absolute;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.remove-s-preview-img-loader {
+  opacity: 0;
 }
 
 .s-small-info {

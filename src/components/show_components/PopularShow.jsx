@@ -18,6 +18,7 @@ function PopularShow() {
           api_key: import.meta.env.VITE_API_KEY,
           language: "en-US",
           page: page,
+          include_adult: false,
         },
       };
     };

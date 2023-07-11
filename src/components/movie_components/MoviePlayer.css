@@ -7,6 +7,7 @@
 }
 
 .movie-small-image-preview {
+  position: relative;
   width: 30%;
   max-width: 100px;
 }
@@ -15,8 +16,25 @@
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  object-position: top;
   border-radius: 6px;
+}
+
+.m-preview-img {
+  opacity: 0;
+}
+
+.show-m-preview-img {
+  opacity: 1;
+}
+
+.m-preview-img-loader {
+  position: absolute;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.remove-m-preview-img-loader {
+  opacity: 0;
 }
 
 .m-small-info {

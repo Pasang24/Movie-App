@@ -13,6 +13,7 @@ function NowPlaying() {
         params: {
           api_key: import.meta.env.VITE_API_KEY,
           page: 1,
+          include_adult: false,
         },
       })
       .then((res) => {

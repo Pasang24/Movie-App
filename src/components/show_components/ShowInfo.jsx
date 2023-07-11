@@ -8,12 +8,16 @@ import ShowDownload from "../series_components/ShowDowonload.jsx";
 import MovieDownload from "../movie_components/MovieDownload.jsx";
 import backdropLoader from "../../assets/backdropLoader.jpg";
 import posterLoader from "../../assets/posterloader.jpg";
+import posterNotAvailable from "../../assets/posterNotAvailable.png";
+import backdropNotAvailable from "../../assets/backdropNotAvailable.jpg";
 import "./ShowInfo.css";
 
 function ShowInfo({ showId, mediaType }) {
   const [showInfo, setShowInfo] = useState({});
   const [showBackdropImage, setShowBackdropImage] = useState(false);
   const [showPosterImage, setShowPosterImage] = useState(false);
+  const [posterAvailable, setPosterAvailable] = useState(true);
+  const [backdropAvailable, setBackdropAvailable] = useState(true);
   const [showTrailer, setShowTrailer] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -59,14 +63,26 @@ function ShowInfo({ showId, mediaType }) {
               }`}
               src={backdropLoader}
             />
-            <img
-              src={`https://image.tmdb.org/t/p/original/${showInfo?.backdrop_path}`}
-              className={`show-detail-image ${
-                showBackdropImage ? "visible-show-image" : ""
-              }`}
-              onLoad={handleBackdropLoad}
-              onError={handleBackdropLoad}
-            />
+            {backdropAvailable && (
+              <img
+                src={`https://image.tmdb.org/t/p/original/${showInfo?.backdrop_path}`}
+                className={`show-detail-image ${
+                  showBackdropImage ? "visible-show-image" : ""
+                }`}
+                alt={showInfo?.title || showInfo?.name}
+                onLoad={handleBackdropLoad}
+                onError={() => {
+                  setBackdropAvailable(false);
+                  handleBackdropLoad();
+                }}
+              />
+            )}
+            {!backdropAvailable && (
+              <img
+                src={backdropNotAvailable}
+                alt={showInfo?.title || showInfo?.name}
+              />
+            )}
           </div>
           <div className="show-overview">
             <div className="show-info">
@@ -77,15 +93,26 @@ function ShowInfo({ showId, mediaType }) {
                   }`}
                   src={posterLoader}
                 />
-                <img
-                  src={`https://image.tmdb.org/t/p/w400/${showInfo?.poster_path}`}
-                  alt={showInfo?.title || showInfo?.name}
-                  className={`show-detail-image ${
-                    showBackdropImage ? "visible-show-image" : ""
-                  }`}
-                  onLoad={handlePosterLoad}
-                  onError={handlePosterLoad}
-                />
+                {posterAvailable && (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w400/${showInfo?.poster_path}`}
+                    alt={showInfo?.title || showInfo?.name}
+                    className={`show-detail-image ${
+                      showBackdropImage ? "visible-show-image" : ""
+                    }`}
+                    onLoad={handlePosterLoad}
+                    onError={() => {
+                      setPosterAvailable(false);
+                      handlePosterLoad();
+                    }}
+                  />
+                )}
+                {!posterAvailable && (
+                  <img
+                    src={posterNotAvailable}
+                    alt={showInfo?.title || showInfo?.name}
+                  />
+                )}
                 <div className="votings">
                   <span>Rating: {showInfo?.vote_average.toFixed(1)} / 10</span>
                   <div className="ratings">
@@ -94,7 +121,7 @@ function ShowInfo({ showId, mediaType }) {
                       style={{
                         width: showInfo?.vote_average
                           ? `${showInfo.vote_average * 10}%`
-                          : "100%",
+                          : "0%",
                       }}
                     ></div>
                   </div>
@@ -124,38 +151,45 @@ function ShowInfo({ showId, mediaType }) {
                   </span>
                   <span>
                     Released:{" "}
-                    {showInfo?.release_date || showInfo?.first_air_date}
+                    {showInfo?.release_date ||
+                      showInfo?.first_air_date ||
+                      "N/A"}
                   </span>
                   <span>
                     Genre:{" "}
                     {showInfo?.genres &&
-                      showInfo.genres.map((genre) => genre.name).join(", ")}
+                      (showInfo.genres.map((genre) => genre.name).join(", ") ||
+                        "N/A")}
                   </span>
                   <span>
                     Casts:{" "}
                     {showInfo?.credits &&
-                      showInfo.credits.cast
+                      (showInfo.credits.cast
                         .slice(0, 5)
                         .map((cast) => cast.name)
-                        .join(", ")}
+                        .join(", ") ||
+                        "N/A")}
                   </span>
                   <span>
-                    Duration: {showInfo?.runtime || showInfo?.episode_run_time}
+                    Duration:{" "}
+                    {showInfo?.runtime || showInfo?.episode_run_time || "N/A"}
                     min
                   </span>
                   <span>
                     Country:{" "}
                     {showInfo?.production_countries &&
-                      showInfo.production_countries
+                      (showInfo.production_countries
                         .map((country) => country.name)
-                        .join(", ")}
+                        .join(", ") ||
+                        "N/A")}
                   </span>
                   <span>
                     Production:{" "}
                     {showInfo?.production_companies &&
-                      showInfo.production_companies
+                      (showInfo.production_companies
                         .map((company) => company.name)
-                        .join(", ")}
+                        .join(", ") ||
+                        "N/A")}
                   </span>
                 </div>
               </div>
@@ -178,7 +212,7 @@ function ShowInfo({ showId, mediaType }) {
             <h2>You may also like</h2>
           )}
           <ShowList
-            showList={showInfo.recommendations.results || []}
+            showList={showInfo.recommendations.results.slice(0, 20) || []}
             mediaType={mediaType}
           />
         </div>
