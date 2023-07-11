@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+import { RxCross2 } from "react-icons/rx";
 import "./TrailerModal.css";
 
-function TrailerModal({ videoKey, onClose }) {
+function TrailerModal({ videoList, onClose }) {
   useEffect(() => {
     const el = document.querySelector(".trailer-video");
     const bodyEl = document.body;
@@ -20,9 +21,19 @@ function TrailerModal({ videoKey, onClose }) {
     };
   }, []);
 
+  let videoKey = "";
+  if (videoList.length > 0) {
+    const trailer = videoList.find((video) => video.type === "Trailer");
+    if (trailer) videoKey = trailer.key;
+  }
+  if (!videoKey) videoKey = "";
+
   return (
     <div className="trailer-container">
       <div className="trailer-wrapper">
+        <button>
+          <RxCross2 size={24} />
+        </button>
         <iframe
           className="trailer-video"
           src={`https://www.youtube.com/embed/${videoKey}`}

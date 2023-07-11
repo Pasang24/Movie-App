@@ -1,5 +1,5 @@
 .show-info-container {
-  margin: 80px 0 20px;
+  margin: 64.6px 0 20px;
 }
 
 .backdrop-poster {
@@ -11,7 +11,7 @@
 }
 
 .backdrop-poster img {
-  width: 90%;
+  width: 100%;
   object-fit: cover;
   max-height: 500px;
 }
@@ -183,7 +183,7 @@
 
 @media screen and (max-width: 720px) {
   .show-info-container {
-    margin-top: 120px;
+    margin-top: 106.6px;
   }
 
   .show-info {

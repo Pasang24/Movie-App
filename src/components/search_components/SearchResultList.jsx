@@ -35,8 +35,7 @@ function SearchResultList({ searchTerm, page }) {
   };
 
   const newList = searchList.filter(
-    (searchTerm) =>
-      searchTerm.media_type !== "person" && searchTerm?.poster_path !== null
+    (searchTerm) => searchTerm.media_type !== "person" //only filtering people and not poster for now
   );
   return (
     <div className="search-result-container">

@@ -30,7 +30,6 @@ function ShowInfo({ showId, mediaType }) {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setShowInfo(res.data);
       })
       .catch((err) => {
@@ -220,7 +219,7 @@ function ShowInfo({ showId, mediaType }) {
       {showTrailer &&
         createPortal(
           <TrailerModal
-            videoKey={showInfo.videos.results[0].key}
+            videoList={showInfo.videos.results}
             onClose={() => setShowTrailer(false)}
           />,
           document.getElementById("trailer-div")

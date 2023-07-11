@@ -43,7 +43,7 @@ function Episode({ showId, seasonId, episode }) {
           </span>
         </div>
         <div className="ep-release-date">
-          <span>Released {episode.air_date}</span>
+          <span>Released {episode.air_date || "N/A"}</span>
         </div>
       </div>
     </li>

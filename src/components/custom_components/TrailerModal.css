@@ -10,19 +10,31 @@
 
 .trailer-wrapper {
   position: relative;
-  padding-bottom: 56.25%;
-  width: 90%;
-  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 94%;
+  max-width: 1000px;
+  aspect-ratio: 16 / 9;
+  border: 6px solid rgb(35, 35, 36);
+}
+
+.trailer-wrapper button {
+  position: absolute;
+  display: flex;
+  right: -20px;
+  top: -20px;
+  background-color: rgb(35, 35, 36);
+  border: none;
+  padding: 4px;
+  border-radius: 50%;
+  align-self: flex-end;
+  cursor: pointer;
 }
 
 .trailer-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  max-height: 450px;
 }
 
 .prevent-scroll {

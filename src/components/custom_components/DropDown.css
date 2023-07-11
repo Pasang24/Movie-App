@@ -18,6 +18,12 @@
   margin-top: 20px;
   overflow-y: scroll;
   border-radius: 6px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.drop-list::-webkit-scrollbar {
+  display: none;
 }
 
 .current-drop {
