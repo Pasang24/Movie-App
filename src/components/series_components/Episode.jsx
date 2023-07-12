@@ -1,17 +1,31 @@
 import { useState, useEffect } from "react";
 import { TbPlayerPlay } from "react-icons/tb";
+import thumbnailNotAvailable from "../../assets/backdropNotAvailable.jpg";
 import episodeImageHolder from "../../assets/posterloader.jpg";
 import "./Episode.css";
 
 function Episode({ showId, seasonId, episode }) {
-  const [showImageHolder, setShowImageHolder] = useState(false);
+  const [showImage, setShowImage] = useState(false);
+  const [imageNotAvailable, setImageNotAvailable] = useState(false);
+  const [timer, setTimer] = useState(null);
 
   useEffect(() => {
-    setShowImageHolder(false);
+    setShowImage(false);
+    setImageNotAvailable(false);
+
+    return () => clearTimeout(timer);
   }, [episode]);
 
   const changeRoute = (path) => {
     location.href = path;
+  };
+
+  const removeImageHolder = () => {
+    setTimer(
+      setTimeout(() => {
+        setShowImage(true);
+      }, 300)
+    );
   };
 
   return (
@@ -22,14 +36,30 @@ function Episode({ showId, seasonId, episode }) {
       }
     >
       <div className="episode-image">
+        <img
+          src={episodeImageHolder}
+          className={`ep-image-holder ${
+            showImage ? "remove-ep-image-holder" : ""
+          }`}
+        />
         <TbPlayerPlay className="player-logo" />
-        {showImageHolder && <img src={episodeImageHolder} />}
-        {!showImageHolder && (
+        {imageNotAvailable && (
+          <img
+            src={thumbnailNotAvailable}
+            className={`ep-image ${showImage ? "show-ep-image" : ""}`}
+          />
+        )}
+        {!imageNotAvailable && (
           <img
             src={`https://image.tmdb.org/t/p/w400${episode.still_path}`}
             alt={episode.name}
             loading="lazy"
-            onError={() => setShowImageHolder(true)}
+            onLoad={removeImageHolder}
+            onError={() => {
+              setImageNotAvailable(true);
+              removeImageHolder();
+            }}
+            className={`ep-image ${showImage ? "show-ep-image" : ""}`}
           />
         )}
       </div>

@@ -24,6 +24,24 @@
   font-size: 40px;
 }
 
+.ep-image-holder {
+  position: absolute;
+  opacity: 1;
+  transition: 0.3s ease;
+}
+
+.remove-ep-image-holder {
+  opacity: 0;
+}
+
+.ep-image {
+  opacity: 0;
+}
+
+.show-ep-image {
+  opacity: 1;
+}
+
 .episode-image img {
   width: 100%;
   aspect-ratio: 16 / 10;

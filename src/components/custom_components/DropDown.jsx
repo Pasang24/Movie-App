@@ -6,7 +6,13 @@ function DropDown({ selectedDrop, setSelectedDrop, drops }) {
   const [showDropDown, setShowDropDown] = useState(false);
 
   const handleClick = (drop) => {
-    setSelectedDrop(drop);
+    if (drop !== selectedDrop) {
+      const epListEl = document.querySelector(".episode-list");
+      if (epListEl) {
+        epListEl.scrollTo(0, 0);
+      }
+      setSelectedDrop(drop);
+    }
     setShowDropDown(false);
   };
 

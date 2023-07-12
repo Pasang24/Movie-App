@@ -9,7 +9,6 @@ function ShowDownload({ showId, totalSeasons }) {
   const [season, setSeason] = useState("Season 1");
   const [seasonId, setSeasonId] = useState(0);
   const [episodeList, setEpisodeList] = useState([]);
-  const [showEp, setShowEp] = useState(true);
 
   const drops = [];
 
@@ -55,9 +54,8 @@ function ShowDownload({ showId, totalSeasons }) {
         selectedDrop={season}
         setSelectedDrop={setSeason}
         drops={drops}
-        setShowEp={() => setShowEp((prev) => !prev)}
       />
-      {showEp && <ul className="episode-list">{renderEpisodeList}</ul>}
+      <ul className="episode-list">{renderEpisodeList}</ul>
     </div>
   );
 }

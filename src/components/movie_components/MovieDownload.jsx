@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { TbPlayerPlay } from "react-icons/tb";
+import thumbNailNotAvailable from "../../assets/backdropNotAvailable.jpg";
 import movieImageHolder from "../../assets/posterloader.jpg";
 import "./MovieDownload.css";
 
 function MovieDownload({ movieInfo }) {
-  const [showImageHolder, setShowImageHolder] = useState(false);
+  const [showImage, setShowImage] = useState(false);
+  const [imageNotAvailable, setImageNotAvailable] = useState(false);
 
   const changeRoute = (path) => {
     location.href = path;
+  };
+
+  const removeImageHolder = () => {
+    setTimeout(() => {
+      setShowImage(true);
+    }, 300);
   };
 
   return (
@@ -18,14 +26,24 @@ function MovieDownload({ movieInfo }) {
         onClick={() => changeRoute(`/watch-movie/${movieInfo.id}`)}
       >
         <div className="movie-player-image">
+          <img
+            src={movieImageHolder}
+            className={`movie-image-holder ${
+              showImage ? "remove-movie-image-holder" : ""
+            }`}
+          />
           <TbPlayerPlay className="movie-player-logo" />
-          {showImageHolder && <img src={movieImageHolder} />}
-          {!showImageHolder && (
+          {imageNotAvailable && <img src={thumbNailNotAvailable} />}
+          {!imageNotAvailable && (
             <img
               src={`https://image.tmdb.org/t/p/w400${movieInfo.backdrop_path}`}
               alt={movieInfo.title}
               loading="lazy"
-              onError={() => setShowImageHolder(true)}
+              onLoad={removeImageHolder}
+              onError={() => {
+                setImageNotAvailable(true);
+                removeImageHolder();
+              }}
             />
           )}
         </div>

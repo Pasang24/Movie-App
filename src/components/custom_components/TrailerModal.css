@@ -10,13 +10,14 @@
 
 .trailer-wrapper {
   position: relative;
+  background-color: rgb(35, 35, 36);
   display: flex;
   flex-direction: column;
   gap: 4px;
   width: 94%;
   max-width: 1000px;
   aspect-ratio: 16 / 9;
-  border: 6px solid rgb(35, 35, 36);
+  padding: 6px;
 }
 
 .trailer-wrapper button {
@@ -30,6 +31,10 @@
   border-radius: 50%;
   align-self: flex-end;
   cursor: pointer;
+}
+
+.trailer-wrapper button:hover {
+  background-color: rgb(109, 109, 109);
 }
 
 .trailer-video {

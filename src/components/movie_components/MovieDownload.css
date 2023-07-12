@@ -36,6 +36,16 @@
   font-size: 40px;
 }
 
+.movie-image-holder {
+  position: absolute;
+  opacity: 1;
+  transition: 0.3s ease;
+}
+
+.remove-movie-image-holder {
+  opacity: 0;
+}
+
 .movie-player-image img {
   width: 100%;
   aspect-ratio: 16 / 10;
